@@ -1,0 +1,246 @@
+---
+import Base from '../layouts/Base.astro';
+
+const expertise = [
+  'Enterprise Architecture',
+  'Engineering Leadership',
+  'Technical Strategy',
+  'Org Design & Scaling',
+  'Tech Debt Economics',
+  'ML/AI Systems',
+  'Platform Engineering',
+  'Executive Stakeholder Management',
+];
+---
+
+<Base
+  title="About"
+  description="Executive technology leader. Strategic translator between engineering depth and business velocity."
+>
+  <!-- ── PAGE HEADER ──────────────────────────── -->
+  <div class="page-header">
+    <div class="container page-header__inner">
+      <span class="label">Executive Profile</span>
+      <h1 class="page-header__title">
+        Not a manager of engineers.<br />
+        <span class="accent">A translator of systems.</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- ── BIO ────────────────────────────────────── -->
+  <section class="section" aria-labelledby="bio-heading">
+    <div class="container about-grid">
+      <div class="about-body">
+        <div class="divider--orange" style="margin-bottom: 2rem;"></div>
+
+        <p class="about-lead">
+          [Your name] is a technology executive with deep roots in engineering 
+          and a track record of operating at the intersection of architectural 
+          strategy and business outcomes.
+        </p>
+
+        <p class="muted">
+          Replace this paragraph with your career narrative. Speak to the 
+          systems you've built, the organisations you've scaled, and the 
+          business outcomes you've driven. This is not a job description — 
+          it's a positioning statement for the level you're operating at.
+        </p>
+
+        <p class="muted">
+          The second paragraph goes here. Keep it grounded in specifics: 
+          industries, scale (teams, revenue, infrastructure complexity), 
+          and decisions you owned — not committees you participated in.
+        </p>
+
+        <blockquote>
+          "The role I play isn't technical lead or business partner. It's 
+          the structural layer that makes both sides of that equation function."
+        </blockquote>
+
+        <p class="muted">
+          Third paragraph — your operating philosophy. Why you think the way 
+          you do about technical leadership. What you've learned that most 
+          people in your domain get wrong.
+        </p>
+      </div>
+
+      <aside class="about-sidebar">
+        <!-- Expertise -->
+        <div class="card" style="margin-bottom: var(--sp-6);">
+          <span class="label" style="margin-bottom: 1rem; display: block;">Domain Expertise</span>
+          <ul class="expertise-list">
+            {expertise.map(item => (
+              <li class="expertise-item">
+                <span class="expertise-dot" aria-hidden="true"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Current focus -->
+        <div class="card">
+          <span class="label" style="margin-bottom: 1rem; display: block;">Currently</span>
+          <p class="muted" style="font-size: var(--t-sm);">
+            Targeting Head of Engineering / GM Technology roles in 
+            high-complexity organisations. Available for strategic advisory 
+            engagements.
+          </p>
+          <a href="mailto:hello@yourdomain.com" class="btn btn--primary" style="margin-top: 1.5rem; width: 100%; justify-content: center;">
+            Get in touch
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ── PHILOSOPHY STRIP ──────────────────────── -->
+  <section class="section--tight philosophy" aria-label="Leadership philosophy">
+    <div class="container">
+      <div class="philosophy__grid">
+        <div class="philosophy__item">
+          <span class="philosophy__num">01</span>
+          <h4>Clarity over consensus</h4>
+          <p class="muted" style="font-size: var(--t-sm);">
+            Good decisions aren't made by committee. They're made by people 
+            with enough context to take a decisive position and defend it.
+          </p>
+        </div>
+        <div class="philosophy__item">
+          <span class="philosophy__num">02</span>
+          <h4>Systems, not symptoms</h4>
+          <p class="muted" style="font-size: var(--t-sm);">
+            Most engineering dysfunction is an organisational problem wearing 
+            a technical mask. Fix the structure, fix the output.
+          </p>
+        </div>
+        <div class="philosophy__item">
+          <span class="philosophy__num">03</span>
+          <h4>Translation is the job</h4>
+          <p class="muted" style="font-size: var(--t-sm);">
+            If leadership can't understand the engineering reality and 
+            engineering can't understand the business priority — that's a 
+            leadership failure, not a communication one.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────── -->
+  <section class="section--tight" style="border-top: 1px solid var(--c-border);">
+    <div class="container" style="display: flex; gap: var(--sp-4); flex-wrap: wrap;">
+      <a href="/cv" class="btn btn--primary">View full CV</a>
+      <a href="/writing" class="btn btn--ghost">Read the thinking</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+.accent { color: var(--c-accent); }
+
+.page-header {
+  padding-top: calc(var(--nav-h) + var(--sp-16));
+  padding-bottom: var(--sp-16);
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,85,0,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-header__title {
+  margin-top: var(--sp-4);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  max-width: 18ch;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--sp-16);
+  align-items: start;
+}
+
+.about-lead {
+  font-size: var(--t-xl);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--c-text);
+  margin-bottom: var(--sp-6);
+  max-width: 56ch;
+}
+
+.expertise-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.expertise-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--f-accent);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--c-text-muted);
+}
+
+.expertise-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  flex-shrink: 0;
+}
+
+.philosophy {
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.philosophy__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-8);
+}
+
+.philosophy__num {
+  font-family: var(--f-accent);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--c-accent);
+  display: block;
+  margin-bottom: var(--sp-4);
+}
+
+.philosophy__item h4 {
+  font-size: var(--t-base);
+  font-weight: 700;
+  margin-bottom: var(--sp-3);
+}
+
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); }
+}
+
+@media (max-width: 768px) {
+  .philosophy__grid { grid-template-columns: 1fr; }
+  .about-sidebar { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,90 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer no-print">
+  <div class="container footer__inner">
+    <div class="footer__left">
+      <span class="footer__logo">
+        JG<span style="color: var(--c-accent)">.</span>
+      </span>
+      <p class="footer__tagline muted">
+        Strategic technology leadership.<br />
+        Engineering depth. Executive velocity.
+      </p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <a href="/" class="footer__link">Home</a>
+      <a href="/about" class="footer__link">About</a>
+      <a href="/writing" class="footer__link">Writing</a>
+      <a href="/cv" class="footer__link">CV</a>
+    </nav>
+
+    <div class="footer__social">
+      <a href="https://linkedin.com/in/yourhandle" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/yourhandle" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <div class="divider" style="margin-bottom: 1.5rem;"></div>
+    <span class="subtle" style="font-size: var(--t-xs); font-family: var(--f-accent);">
+      © {year} JG Tech Thinking. All rights reserved.
+    </span>
+  </div>
+</footer>
+
+<style>
+.footer {
+  padding: var(--sp-16) 0 var(--sp-8);
+  border-top: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--sp-16);
+  align-items: start;
+  margin-bottom: var(--sp-12);
+}
+
+.footer__logo {
+  font-family: var(--f-headline);
+  font-weight: 800;
+  font-size: var(--t-2xl);
+  letter-spacing: -0.03em;
+  display: block;
+  margin-bottom: var(--sp-4);
+}
+
+.footer__tagline {
+  font-size: var(--t-sm);
+  line-height: 1.6;
+}
+
+.footer__nav,
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.footer__link {
+  font-family: var(--f-accent);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--c-text-muted);
+  transition: color 0.15s;
+}
+.footer__link:hover { color: var(--c-accent); }
+
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-8);
+  }
+  .footer__left { grid-column: 1 / -1; }
+}
+</style>

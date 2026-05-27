@@ -1,0 +1,244 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Placeholder articles — replace with Astro content collections when you have real posts
+const posts = [
+  {
+    slug: 'why-tech-debt-is-a-finance-problem',
+    title: 'Tech Debt Is Not a Technical Problem. It\'s a Finance Problem.',
+    excerpt: 'Every engineering team has it. Almost no executive team prices it correctly. Here\'s the framing that actually moves the conversation.',
+    pillar: 'Strategic Translation',
+    date: '2025-06-01',
+    readTime: '8 min',
+  },
+  {
+    slug: 'the-architecture-of-high-performing-teams',
+    title: 'The Architecture of High-Performing Engineering Teams',
+    excerpt: 'Agile won the vocabulary war and lost the delivery war. What actually drives throughput in modern engineering orgs looks nothing like a sprint board.',
+    pillar: 'Modern Teams',
+    date: '2025-05-15',
+    readTime: '11 min',
+  },
+  {
+    slug: 'why-your-cto-is-failing-the-board',
+    title: 'Why Your CTO Is Failing the Board (And Doesn\'t Know It)',
+    excerpt: 'The modern CTO role is a translation role. Most people in it are still trying to be the best engineer in the room.',
+    pillar: 'Opinionated Strategy',
+    date: '2025-05-01',
+    readTime: '7 min',
+  },
+];
+
+const pillars = ['All', 'Strategic Translation', 'Modern Teams', 'Opinionated Strategy'];
+---
+
+<Base
+  title="Writing"
+  description="Opinionated positions on technical leadership, org design, and engineering strategy."
+>
+  <!-- ── PAGE HEADER ──────────────────────────── -->
+  <div class="page-header">
+    <div class="container">
+      <span class="label">Writing</span>
+      <h1 class="page-title">
+        The thinking behind<br />
+        the <span class="accent">decisions.</span>
+      </h1>
+      <p class="page-desc muted">
+        Three pillars. Opinionated positions. No hedging.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── FILTER ─────────────────────────────────── -->
+  <div class="filter-bar">
+    <div class="container filter-bar__inner">
+      {pillars.map(p => (
+        <button class={`filter-btn ${p === 'All' ? 'filter-btn--active' : ''}`} data-filter={p}>
+          {p}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- ── POSTS ──────────────────────────────────── -->
+  <section class="section" aria-label="Articles">
+    <div class="container">
+      <div class="posts-grid" id="posts-grid">
+        {posts.map((post, i) => (
+          <article class="post-card" data-pillar={post.pillar}>
+            <div class="post-card__meta">
+              <span class="pillar-tag">{post.pillar}</span>
+              <span class="subtle post-card__date" style="font-family: var(--f-accent); font-size: var(--t-xs);">
+                {new Date(post.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'short', day: 'numeric' })}
+                &nbsp;·&nbsp;{post.readTime} read
+              </span>
+            </div>
+            <h2 class="post-card__title">
+              <a href={`/writing/${post.slug}`}>{post.title}</a>
+            </h2>
+            <p class="post-card__excerpt muted">{post.excerpt}</p>
+            <a href={`/writing/${post.slug}`} class="post-card__cta">
+              Read →
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <!-- Empty state for filtered views -->
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <p class="muted">No articles in this pillar yet.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+.accent { color: var(--c-accent); }
+
+.page-header {
+  padding-top: calc(var(--nav-h) + var(--sp-16));
+  padding-bottom: var(--sp-12);
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface);
+}
+
+.page-title {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  margin-top: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+
+.page-desc { font-size: var(--t-lg); }
+
+/* ─── FILTER BAR ──── */
+.filter-bar {
+  border-bottom: 1px solid var(--c-border);
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 50;
+  background: rgba(17, 19, 21, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.filter-bar__inner {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-3) 0;
+  overflow-x: auto;
+}
+
+.filter-btn {
+  font-family: var(--f-accent);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  background: transparent;
+  border: 1px solid var(--c-border);
+  border-radius: 2px;
+  padding: var(--sp-2) var(--sp-4);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.filter-btn:hover { color: var(--c-text); border-color: var(--c-text-muted); }
+
+.filter-btn--active {
+  background: var(--c-accent);
+  color: var(--c-text);
+  border-color: var(--c-accent);
+}
+
+/* ─── POSTS ──── */
+.posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.post-card {
+  padding: var(--sp-8) 0;
+  border-bottom: 1px solid var(--c-border);
+  transition: padding-left 0.2s var(--ease);
+}
+
+.post-card:hover { padding-left: var(--sp-4); }
+
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+
+.post-card__title {
+  font-size: var(--t-2xl);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: var(--sp-3);
+}
+
+.post-card__title a {
+  transition: color 0.15s;
+}
+
+.post-card__title a:hover { color: var(--c-accent); }
+
+.post-card__excerpt {
+  font-size: var(--t-base);
+  line-height: 1.7;
+  max-width: 70ch;
+  margin-bottom: var(--sp-4);
+}
+
+.post-card__cta {
+  font-family: var(--f-accent);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--c-accent);
+  letter-spacing: 0.02em;
+  transition: letter-spacing 0.2s;
+}
+
+.post-card__cta:hover { letter-spacing: 0.06em; }
+
+.empty-state {
+  padding: var(--sp-16) 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .post-card:hover { padding-left: 0; }
+  .post-card__title { font-size: var(--t-xl); }
+}
+</style>
+
+<script>
+const filterBtns = document.querySelectorAll('.filter-btn');
+const posts = document.querySelectorAll('.post-card');
+const emptyState = document.getElementById('empty-state');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.getAttribute('data-filter');
+
+    filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+    btn.classList.add('filter-btn--active');
+
+    let visible = 0;
+    posts.forEach(post => {
+      const pillar = post.getAttribute('data-pillar');
+      const show = filter === 'All' || pillar === filter;
+      (post as HTMLElement).style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (emptyState) {
+      emptyState.style.display = visible === 0 ? 'block' : 'none';
+    }
+  });
+});
+</script>
