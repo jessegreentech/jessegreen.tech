@@ -3,58 +3,83 @@ import Base from '../layouts/Base.astro';
 
 const roles = [
   {
-    title: 'Head of Engineering / VP Technology',
-    company: '[Company Name]',
-    period: '20XX – Present',
+    title: 'Engineering Manager',
+    company: 'Kaluza',
+    period: 'Jun 2026 – Present',
     location: 'Melbourne, AU',
     bullets: [
-      'Led architectural transformation of [X] platform serving [Y] users, reducing deployment lead time by [Z]%.',
-      'Built and scaled engineering organisation from [X] to [Y] engineers across [N] distributed teams.',
-      'Drove $[X]M reduction in infrastructure cost through systematic tech debt remediation programme.',
-      'Partnered with C-suite to translate [strategic initiative] into a [technical outcome] delivered in [timeframe].',
+      'Engineering Manager at a B2B SaaS company operating in the energy sector.',
     ],
   },
   {
-    title: 'Engineering Manager / Principal Engineer',
-    company: '[Previous Company]',
-    period: '20XX – 20XX',
+    title: 'Engineering Manager / Platform Owner',
+    company: 'SportsBet',
+    period: 'Jul 2022 – Jun 2026',
     location: 'Melbourne, AU',
     bullets: [
-      'Designed and shipped [key system] handling [scale indicator], now core to [business function].',
-      'Established engineering practices (code review, incident response, on-call) adopted across [X] teams.',
-      'Mentored [N] engineers to senior level; [X] now in leadership positions.',
+      'Scaled feature delivery by transitioning from a centralised service model to an inner source platform model.',
+      'Led development of an MCP server over an enterprise GraphQL aggregation layer, enabling other teams to build agentic AI features. Delivered a PoC with OAuth 2.0 token exchange; productionised the pattern and established a reusable agent pattern library covering data retrieval, modification, bulk operations, and approval flows.',
+      'Member of multiple tech department strategy groups including the 3-year strategy group and AI strategy committee.',
+      'Established a cross-cutting platform team to support and deliver enablement work across the engineering organisation.',
     ],
   },
   {
-    title: 'Senior Software Engineer',
-    company: '[Earlier Company]',
-    period: '20XX – 20XX',
-    location: '[City], AU',
+    title: 'Engineering Manager',
+    company: 'PlayHQ',
+    period: 'Jan 2021 – Jun 2022',
+    location: 'Melbourne, AU',
     bullets: [
-      'Technical lead for [project], responsible for architecture, delivery, and stakeholder communication.',
-      'Introduced [technology/practice] that became standard across the engineering organisation.',
+      'Grew the engineering team rapidly, spinning up multiple new delivery teams and recruiting for both onshore and offshore roles.',
+      'Created a framework for surfacing and prioritising non-feature work (platform maintenance, tech debt) alongside product stakeholders.',
+      'Introduced support processes that empowered teams to make their own delivery speed vs. quality decisions, with tooling to support those processes.',
+    ],
+  },
+  {
+    title: 'Technology Lead',
+    company: 'NAB',
+    period: 'Sep 2018 – Dec 2020',
+    location: 'Melbourne, AU',
+    bullets: [
+      'Directed and managed a full-stack technology team building an AI-powered chat platform for NAB.',
+      'Delivered the chat service across multiple platforms — nab.com, Internet Banking, and both NAB mobile apps.',
+      'Scaled the delivery team from one engineer to twelve across three scrum teams.',
+    ],
+  },
+  {
+    title: 'Full-stack Engineer',
+    company: 'NAB',
+    period: 'Jun 2015 – Sep 2018',
+    location: 'Melbourne, AU',
+    bullets: [
+      'Delivered the responsive redesign of nab.com.au, working with Adobe AEM components to ship quality content at launch.',
+      'Worked across Angular frameworks and Adobe AEM, developing technical solutions to address customer needs.',
     ],
   },
 ];
 
 const education = [
   {
-    degree: '[Degree] in [Field]',
-    institution: '[University]',
-    year: '20XX',
+    degree: 'AI Programming with Python',
+    institution: 'RMIT Online',
+    year: '2024',
+  },
+  {
+    degree: 'Bachelor of Information Technology',
+    institution: 'RMIT University',
+    year: '2010 – 2013',
   },
 ];
 
 const skills = [
-  { category: 'Leadership', items: ['Org Design', 'Engineering Culture', 'Stakeholder Management', 'P&L Ownership', 'Executive Communication'] },
-  { category: 'Architecture', items: ['Distributed Systems', 'Platform Engineering', 'Cloud Infrastructure (AWS/GCP)', 'ML/AI Systems', 'API Design'] },
-  { category: 'Delivery', items: ['Engineering Metrics', 'DORA Framework', 'Tech Debt Strategy', 'Incident Management', 'Agile at Scale'] },
+  { category: 'Leadership', items: ['Org Design', 'Engineering Culture', 'Stakeholder Management', 'Executive Communication', 'Platform Strategy'] },
+  { category: 'Technical', items: ['AI Implementation', 'Agentic Systems & MCP', 'Front-end (React, HTML, CSS, JS)', 'Back-end (Node.js, Java)', 'Cloud Infrastructure (AWS)'] },
+  { category: 'Delivery', items: ['Inner Source Models', 'Tech Debt Strategy', 'Engineering Metrics', 'Incident Management', 'Cross-functional Collaboration'] },
 ];
 ---
 
 <Base
   title="CV"
-  description="Professional CV — technology executive, engineering leader, strategic translator."
+  description="Professional CV — engineering manager and technology leader with a track record across fintech, sportstech, and energy sectors."
 >
   <!-- ── PAGE HEADER ──────────────────────────── -->
   <div class="page-header no-print">
@@ -62,10 +87,10 @@ const skills = [
       <span class="label">Curriculum Vitae</span>
       <div class="page-header__row">
         <h1 class="page-title">
-          Full history.<br />
-          <span class="accent">Structured for decisions.</span>
+          The career so far.<br />
+          <span class="accent">Ten years. Three industries. One throughline.</span>
         </h1>
-        <button class="btn btn--ghost no-print" onclick="window.print()">
+        <button class="btn btn--ghost" onclick="window.print()">
           ↓ Download PDF
         </button>
       </div>
@@ -78,12 +103,12 @@ const skills = [
 
       <!-- Print header (hidden on screen) -->
       <div class="cv-print-header print-only">
-        <h1 class="cv-name">[Your Name]</h1>
+        <h1 class="cv-name">Jesse Green</h1>
         <p class="cv-print-meta">
-          Head of Engineering · Technology Executive · Melbourne, AU<br />
-          hello@yourdomain.com · linkedin.com/in/yourhandle · jessegreen.tech
+          Engineering Manager · Technology Leader · Melbourne, AU<br />
+          jesse@jessegreen.tech · linkedin.com/in/jessergreen · jessegreen.tech
         </p>
-        <div style="height: 2px; background: #FF5500; margin: 1rem 0 2rem;"></div>
+          <div class="cv-print-divider"></div>
       </div>
 
       <div class="cv-grid">
@@ -93,23 +118,18 @@ const skills = [
           <!-- Summary -->
           <div class="cv-block">
             <h2 class="cv-section-heading">
-              <span class="cv-section-dot" aria-hidden="true"></span>
+              <span class="cv-dot cv-section-dot" aria-hidden="true"></span>
               Profile
             </h2>
             <p class="cv-summary">
-              Technology executive with [X]+ years operating at the intersection of 
-              engineering systems and business strategy. Track record of building 
-              high-performing engineering organisations, translating complex technical 
-              realities into executive decisions, and delivering architectural outcomes 
-              at enterprise scale. Currently targeting Head of Engineering / GM Technology 
-              roles in high-complexity organisations.
+              Engineering leader with a decade of experience operating at the intersection of engineering systems and business strategy. Track record of building delivery-focused teams, translating complex technical realities into decisions that land with executives, and shipping at scale across fintech, sportstech, and energy. Former engineer. Still thinks like one.
             </p>
           </div>
 
           <!-- Experience -->
           <div class="cv-block">
             <h2 class="cv-section-heading">
-              <span class="cv-section-dot" aria-hidden="true"></span>
+              <span class="cv-dot cv-section-dot" aria-hidden="true"></span>
               Experience
             </h2>
 
@@ -125,7 +145,7 @@ const skills = [
                 <ul class="cv-role__bullets">
                   {role.bullets.map(b => (
                     <li class="cv-bullet">
-                      <span class="cv-bullet__dot" aria-hidden="true"></span>
+                      <span class="cv-dot cv-bullet__dot" aria-hidden="true"></span>
                       <span>{b}</span>
                     </li>
                   ))}
@@ -137,7 +157,7 @@ const skills = [
           <!-- Education -->
           <div class="cv-block">
             <h2 class="cv-section-heading">
-              <span class="cv-section-dot" aria-hidden="true"></span>
+              <span class="cv-dot cv-section-dot" aria-hidden="true"></span>
               Education
             </h2>
             {education.map(e => (
@@ -152,17 +172,17 @@ const skills = [
         <!-- Sidebar -->
         <aside class="cv-sidebar">
 
-          <!-- Contact — print only -->
-          <div class="cv-widget print-hide">
+          <!-- Contact -->
+          <div class="cv-widget no-print">
             <span class="label cv-widget__label">Contact</span>
             <div class="cv-contact-list">
-              <a href="mailto:hello@yourdomain.com" class="cv-contact-item">
-                hello@yourdomain.com
+              <a href="mailto:jesse@jessegreen.tech" class="cv-contact-item">
+                jesse@jessegreen.tech
               </a>
-              <a href="https://linkedin.com/in/yourhandle" class="cv-contact-item" target="_blank">
+              <a href="https://linkedin.com/in/jessergreen" class="cv-contact-item" target="_blank">
                 LinkedIn
               </a>
-              <a href="https://github.com/yourhandle" class="cv-contact-item" target="_blank">
+              <a href="https://github.com/jessegreentech" class="cv-contact-item" target="_blank">
                 GitHub
               </a>
             </div>
@@ -181,11 +201,11 @@ const skills = [
           ))}
 
           <!-- Download CTA (screen only) -->
-          <div class="cv-widget no-print">
-            <button class="btn btn--primary" style="width: 100%; justify-content: center;" onclick="window.print()">
-              ↓ Download as PDF
+          <div class="cv-widget cv-widget--download no-print">
+            <button class="btn btn--primary" onclick="window.print()">
+              ↓ Download PDF
             </button>
-            <p class="subtle" style="font-size: var(--t-xs); font-family: var(--f-accent); margin-top: 0.75rem; text-align: center;">
+            <p class="subtle cv-download-hint">
               Use browser print → Save as PDF
             </p>
           </div>
@@ -199,8 +219,8 @@ const skills = [
 .accent { color: var(--c-accent); }
 
 .page-header {
-  padding-top: calc(var(--nav-h) + var(--sp-12));
-  padding-bottom: var(--sp-10);
+  padding-top: calc(var(--nav-h) + var(--sp-16));
+  padding-bottom: var(--sp-16);
   border-bottom: 1px solid var(--c-border);
   background: var(--c-surface);
 }
@@ -210,11 +230,12 @@ const skills = [
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--sp-8);
+  margin-top: var(--sp-4);
 }
 
 .page-title {
   font-size: clamp(2rem, 3.5vw, 3rem);
-  margin-top: var(--sp-4);
+  margin-top: 0;
 }
 
 /* ─── CV LAYOUT ──── */
@@ -245,12 +266,15 @@ const skills = [
   border-bottom: 1px solid var(--c-border);
 }
 
-.cv-section-dot {
-  width: 6px;
-  height: 6px;
+.cv-dot {
   border-radius: 50%;
   background: var(--c-accent);
   flex-shrink: 0;
+}
+
+.cv-section-dot {
+  width: 6px;
+  height: 6px;
 }
 
 .cv-block {
@@ -323,9 +347,6 @@ const skills = [
 .cv-bullet__dot {
   width: 4px;
   height: 4px;
-  border-radius: 50%;
-  background: var(--c-accent);
-  flex-shrink: 0;
   margin-top: 8px;
 }
 
@@ -340,13 +361,34 @@ const skills = [
   margin-bottom: var(--sp-1);
 }
 
+/* ─── SIDEBAR ──── */
+.cv-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--sp-8));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  align-self: start;
+}
+
 /* ─── SIDEBAR WIDGETS ──── */
 .cv-widget {
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: 2px;
   padding: var(--sp-6);
-  margin-bottom: var(--sp-4);
+}
+
+.cv-widget--download .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.cv-download-hint {
+  font-size: var(--t-xs);
+  font-family: var(--f-accent);
+  margin-top: 0.75rem;
+  text-align: center;
 }
 
 .cv-widget__label {
@@ -385,36 +427,65 @@ const skills = [
 
 .cv-skill-item:last-child { border-bottom: none; }
 
+.cv-print-divider {
+  height: 2px;
+  background: var(--c-accent);
+  margin: 1rem 0 2rem;
+}
+
 /* ─── PRINT ──── */
 .cv-print-header { display: none; }
 .print-only { display: none; }
 
 @media print {
-  .page-header { display: none; }
-  .cv-section { padding-top: 0; }
+  .cv-section { padding: 0; }
   .cv-print-header { display: block; }
+  .cv-sidebar { position: static; }
   .cv-grid { grid-template-columns: 1fr 220px; gap: 2rem; }
-  .cv-widget { border-color: #ddd; background: #f9f9f9; }
-  .cv-section-heading { color: #555; border-color: #ddd; }
-  .cv-bullet { color: #333; }
-  .cv-role { border-color: #ddd; }
-  .cv-role__period { color: #FF5500; }
-  .cv-summary { color: #333; }
-  .cv-contact-item, .cv-skill-item { color: #333; }
-  .cv-role__company { color: #555; }
-  .cv-edu__meta { color: #555; }
-  .print-hide { display: none !important; }
+
+  
 }
 
 /* ─── RESPONSIVE ──── */
 @media (max-width: 900px) {
   .cv-grid { grid-template-columns: 1fr; }
-  .cv-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+  .cv-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+  }
 }
 
 @media (max-width: 600px) {
   .cv-sidebar { grid-template-columns: 1fr; }
   .cv-role__header { flex-direction: column; }
-  .page-header__row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<style is:global>
+@media print {
+  .page-header {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .cv-grid {
+    grid-template-columns: 1fr 140px !important;
+  }
+
+  .cv-widget__label {
+    font-size: 0.6rem !important;
+  }
+
+  .cv-skill-item,
+  .cv-contact-item {
+    font-size: 0.65rem !important;
+    word-break: break-word !important;
+  }
 }
 </style>

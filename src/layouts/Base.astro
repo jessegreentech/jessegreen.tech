@@ -35,6 +35,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
   <title>{title} | Jesse Green</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    @media print {
+      header, footer, .page-header { display: none !important; }
+      main { padding: 0 !important; margin: 0 !important; }
+    }
+  </style>
 </head>
 <body>
   <Nav />

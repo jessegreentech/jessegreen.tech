@@ -11,8 +11,7 @@ const currentPath = Astro.url.pathname;
 <header class="nav">
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="Jesse Green — Home">
-      <span class="nav__logo-jg">JG</span>
-      <span class="nav__logo-dot">.</span>
+      <img src="/images/jg-icon-dark.svg" alt="Jesse Green" class="nav__logo-img" />
     </a>
 
     <nav class="nav__links" aria-label="Primary navigation">
@@ -24,7 +23,7 @@ const currentPath = Astro.url.pathname;
           {label}
         </a>
       ))}
-      <a href="mailto:hello@yourdomain.com" class="btn btn--primary nav__cta">
+      <a href="mailto:jesse@jessegreen.tech" class="btn btn--primary nav__cta">
         Contact
       </a>
     </nav>
@@ -40,7 +39,7 @@ const currentPath = Astro.url.pathname;
     {nav.map(({ label, href }) => (
       <a href={href} class="nav__mobile-link">{label}</a>
     ))}
-    <a href="mailto:hello@yourdomain.com" class="btn btn--primary" style="margin-top: 1rem;">Contact</a>
+    <a href="mailto:jesse@jessegreen.tech" class="btn btn--primary" style="margin-top: 1rem;">Contact</a>
   </div>
 </header>
 
@@ -66,24 +65,14 @@ const currentPath = Astro.url.pathname;
 
 .nav__logo {
   display: flex;
-  align-items: baseline;
-  gap: 0;
-  font-family: var(--f-headline);
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
+  align-items: center;
   transition: opacity 0.2s;
 }
 .nav__logo:hover { opacity: 0.8; }
-.nav__logo-jg { color: var(--c-text); }
-.nav__logo-dot { color: var(--c-accent); margin: 0 1px; }
-.nav__logo-wordmark {
-  font-family: var(--f-accent);
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: var(--c-text-muted);
-  letter-spacing: 0;
-  margin-left: 6px;
+.nav__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .nav__links {
