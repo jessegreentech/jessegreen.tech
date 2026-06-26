@@ -1,14 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const expertise = [
-  'Engineering Leadership',
-  'Front-End Engineering',
-  'Team Dynamics & Culture',
-  'AI & Emerging Tech',
-  'Product & UX',
-  'Business–Engineering Translation',
-];
 ---
 
 <Base
@@ -21,7 +12,7 @@ const expertise = [
       <span class="label">About</span>
       <h1 class="page-header__title">
         Once an engineer, always an engineer.<br />
-        <span class="accent">I traded code for the teams that write it.</span>
+        <span class="accent">I traded creating software for creating solutions, and the teams that build them.</span>
       </h1>
     </div>
   </div>
@@ -30,8 +21,6 @@ const expertise = [
   <section class="section" aria-labelledby="bio-heading">
     <div class="container about-grid">
       <div class="about-body">
-        <div class="divider--orange" style="margin-bottom: 2rem;"></div>
-
         <p class="about-lead">
           It's hard to put a traditional label on the roles I've played. Most of my time writing code was as a front-end engineer, but I bounced around back-end, devops, UX and product too. Wherever there was a gap, or a problem with fuzzy edges, that's where I've gone. I've often described myself, tongue firmly in-cheek, as a "full hack" developer, rather than full-stack.
         </p>
@@ -45,11 +34,19 @@ const expertise = [
         </p>
 
         <p class="muted">
-          I write about two things: people and emerging tech (right now, that means AI). Particularly, I write about how those two things mix, or don't as the case may be.
+          I write about two things: people and emerging tech (right now, that means AI). Particularly, I write about how those two things mix, or don't, as the case may be.
+        </p>
+
+        <p class="muted">
+          Engineering teams aren't black boxes where input === output. Engineers are distinct personalities, and understanding what drives their behaviour and engagement is the difference between a team that ships and one that stalls. Most leadership discourse glosses over this.
+        </p>
+
+        <p class="muted">
+          On AI and other emerging tech, I try to offer a pragmatic, grounded perspective. No hype. No fear. I want to find what's useful and beneficial to teams operating in the real world, with the perspective of someone who understands the technology and leads the people building with it.
         </p>
 
         <blockquote>
-          "I write to share ideas worth thinking about, and to give people language for things they already know but haven't said yet."
+          I write to share ideas worth thinking about, and to give people language for things they already know but haven't said yet.
         </blockquote>
 
         <p class="muted">
@@ -58,42 +55,40 @@ const expertise = [
       </div>
 
       <aside class="about-sidebar">
-        <!-- Expertise -->
-        <div class="card" style="margin-bottom: var(--sp-6);">
-          <span class="label" style="margin-bottom: 1rem; display: block;">Domain Expertise</span>
-          <ul class="expertise-list">
-            {expertise.map(item => (
-              <li class="expertise-item">
-                <span class="expertise-dot" aria-hidden="true"></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <!-- Currently -->
+        <div class="card">
+          <span class="label">Currently</span>
+          <p class="muted">Engineering Manager at <strong>Kaluza</strong>. B2B SaaS, energy sector. Based in Melbourne.</p>
         </div>
 
-        <!-- Current focus -->
+        <!-- Writing about -->
         <div class="card">
-          <span class="label" style="margin-bottom: 1rem; display: block;">Currently</span>
-          <p class="muted" style="font-size: var(--t-sm);">
-            Writing about the people side of engineering and the pragmatics of AI. Based in Melbourne, Australia.
-          </p>
-          <a href="mailto:jesse@jessegreen.tech" class="btn btn--primary" style="margin-top: 1.5rem; width: 100%; justify-content: center;">
-            Get in touch
-          </a>
+          <span class="label">Writing about</span>
+          <p class="muted">The people side of engineering. The pragmatics of AI adoption. Where those two things collide.</p>
+        </div>
+
+        <!-- Elsewhere -->
+        <div class="card sidebar-card--full">
+          <span class="label">Elsewhere</span>
+          <div class="sidebar-card__links">
+            <a href="/writing" class="btn btn--primary">Read the writing →</a>
+            <a href="/cv" class="btn btn--ghost">View full CV →</a>
+          </div>
         </div>
       </aside>
     </div>
   </section>
 
   <!-- ── PHILOSOPHY STRIP ──────────────────────── -->
-  <section class="section--tight philosophy" aria-label="Leadership philosophy">
+  <section class="section--tight philosophy" aria-labelledby="philosophy-heading">
     <div class="container">
+      <h2 id="philosophy-heading" class="sr-only">Leadership philosophy</h2>
       <div class="philosophy__grid">
         <div class="philosophy__item">
           <span class="philosophy__num">01</span>
-          <h4>Full hack, not full-stack</h4>
+          <h4>Gaps are where I shine</h4>
           <p class="muted" style="font-size: var(--t-sm);">
-            Most gaps aren't front-end or back-end problems. They're fuzzy-edged, cross-discipline problems. That's where I've always gone.
+            Most problems don't live neatly inside a domain. They live in the spaces between disciplines, or in the skills no one realised were missing. That's where I'm drawn, where I always end up, and where I do my best work.
           </p>
         </div>
         <div class="philosophy__item">
@@ -115,16 +110,28 @@ const expertise = [
   </section>
 
   <!-- ── CTA ───────────────────────────────────── -->
-  <section class="section--tight" style="border-top: 1px solid var(--c-border);">
-    <div class="container" style="display: flex; gap: var(--sp-4); flex-wrap: wrap;">
+  <section class="section--tight about-cta">
+    <div class="container about-cta__inner">
       <a href="/cv" class="btn btn--primary">View full CV</a>
-      <a href="/writing" class="btn btn--ghost">Read the thinking</a>
+      <a href="/writing" class="btn btn--ghost">Read the writing →</a>
     </div>
   </section>
 </Base>
 
 <style>
 .accent { color: var(--c-accent); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .page-header {
   padding-top: calc(var(--nav-h) + var(--sp-16));
@@ -168,28 +175,42 @@ const expertise = [
   max-width: 56ch;
 }
 
-.expertise-list {
+.about-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--sp-8));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.about-sidebar .label {
+  display: block;
+  margin-bottom: var(--sp-3);
+}
+
+.about-sidebar .card p.muted {
+  font-size: var(--t-sm);
+}
+
+.sidebar-card__links {
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
 }
 
-.expertise-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  font-family: var(--f-accent);
-  font-size: var(--t-sm);
-  font-weight: 500;
-  color: var(--c-text-muted);
+.sidebar-card__links .btn {
+  width: 100%;
+  justify-content: center;
 }
 
-.expertise-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--c-accent);
-  flex-shrink: 0;
+.about-cta {
+  border-top: 1px solid var(--c-border);
+}
+
+.about-cta__inner {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
 }
 
 .philosophy {
@@ -222,7 +243,13 @@ const expertise = [
 
 @media (max-width: 1024px) {
   .about-grid { grid-template-columns: 1fr; }
-  .about-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); }
+  .about-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-6);
+  }
+  .sidebar-card--full { grid-column: 1 / -1; }
 }
 
 @media (max-width: 768px) {
