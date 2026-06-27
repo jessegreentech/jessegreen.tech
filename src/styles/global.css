@@ -263,7 +263,9 @@ blockquote {
   /* ── GLOBAL ── */
   body {
     background: #fff !important;
-    min-height: 0;
+    min-height: 0 !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
   }
 
   .header { display: none !important; }
@@ -282,13 +284,21 @@ blockquote {
     padding: 0 !important;
   }
 
+  /* Firefox can't reliably fragment CSS Grid across print pages — use flex instead */
   .cv-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 180px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
     gap: 1.25rem !important;
   }
 
+  .cv-main {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
   .cv-sidebar {
+    flex: 0 0 140px !important;
     position: static !important;
   }
 
@@ -400,8 +410,9 @@ blockquote {
   }
 
   .cv-block {
-    page-break-inside: avoid;
-    break-inside: avoid;
+    /* Intentionally not break-inside: avoid — blocks like Experience can span pages.
+       Individual roles are protected by break-inside: avoid on .cv-role. */
+    break-inside: auto;
   }
 
   .cv-edu {
@@ -409,10 +420,12 @@ blockquote {
     break-inside: avoid;
   }
 
-    /* Fully hide the header/nav */
+    /* Fully hide the header/nav (position: static required for Firefox print) */
   header {
     display: none !important;
+    position: static !important;
     height: 0 !important;
+    overflow: hidden !important;
   }
 
   /* Kill blue link colours */
@@ -421,10 +434,7 @@ blockquote {
     text-decoration: none !important;
   }
 
-  /* Tighten sidebar further */
-  .cv-grid {
-    grid-template-columns: 1fr 160px !important;
-  }
+  /* (grid-template-columns removed — print layout uses flex, not grid) */
 
   .cv-widget {
     padding: 0.5rem !important;
@@ -449,10 +459,7 @@ blockquote {
     display: none !important;
   }
 
-  /* Shrink sidebar enough to fit */
-  .cv-grid {
-    grid-template-columns: 1fr 140px !important;
-  }
+  /* (grid-template-columns removed — print layout uses flex, not grid) */
 
   .cv-widget__label {
     font-size: 0.6rem !important;

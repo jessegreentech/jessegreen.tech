@@ -447,7 +447,7 @@ const skills = [
 }
 
 /* ─── RESPONSIVE ──── */
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .cv-grid { grid-template-columns: 1fr; }
   .cv-sidebar {
     position: static;
@@ -457,7 +457,7 @@ const skills = [
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .cv-sidebar { grid-template-columns: 1fr; }
   .cv-role__header { flex-direction: column; }
 }
@@ -475,7 +475,7 @@ const skills = [
   }
 
   .cv-grid {
-    grid-template-columns: 1fr 140px !important;
+    /* grid-template-columns removed — print layout uses flex */
   }
 
   .cv-widget__label {
