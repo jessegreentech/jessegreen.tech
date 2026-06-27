@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.date.toLocaleDateString('en-AU', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Base title={post.data.title} description={post.data.description}>
+  <div class="post-page">
+
+    <div class="post-header">
+      <div class="post-meta">
+        <span class="pillar-tag">{post.data.pillar}</span>
+        <span class="post-date">
+          {formattedDate}{post.data.readTime ? ` · ${post.data.readTime} read` : ''}
+        </span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="post-description">{post.data.description}</p>
+    </div>
+
+    <div class="post-content">
+      <Content />
+    </div>
+
+    <div class="post-footer">
+      <a href="/writing" class="back-link">← All writing</a>
+    </div>
+
+  </div>
+</Base>
+
+<style>
+  .post-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: calc(var(--nav-h) + var(--sp-16)) var(--sp-8) var(--sp-24);
+  }
+
+  .post-header {
+    margin-bottom: var(--sp-12);
+    padding-bottom: var(--sp-8);
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-6);
+  }
+
+  .post-date {
+    font-family: var(--f-accent);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .post-page h1 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-4);
+  }
+
+  .post-description {
+    font-size: var(--t-lg);
+    line-height: 1.6;
+    color: var(--c-text-muted);
+    max-width: 58ch;
+  }
+
+  /* Rendered Markdown */
+  .post-content :global(p) {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--c-text-muted);
+    margin-bottom: var(--sp-6);
+    max-width: 68ch;
+  }
+
+  .post-content :global(h2) {
+    font-size: var(--t-2xl);
+    font-weight: 800;
+    color: var(--c-text);
+    margin: var(--sp-12) 0 var(--sp-4);
+    letter-spacing: -0.02em;
+  }
+
+  .post-content :global(h3) {
+    font-size: var(--t-xl);
+    font-weight: 700;
+    color: var(--c-text);
+    margin: var(--sp-8) 0 var(--sp-3);
+  }
+
+  .post-content :global(strong) {
+    color: var(--c-text);
+    font-weight: 600;
+  }
+
+  .post-content :global(em) {
+    color: var(--c-accent);
+    font-style: normal;
+  }
+
+  .post-content :global(blockquote) {
+    border-left: 2px solid var(--c-accent);
+    padding: var(--sp-4) var(--sp-6);
+    background: var(--c-surface);
+    margin: var(--sp-8) 0;
+    font-size: var(--t-lg);
+    font-weight: 500;
+    color: var(--c-text);
+  }
+
+  .post-content :global(blockquote p) {
+    font-size: inherit;
+    color: inherit;
+    margin-bottom: 0;
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    padding-left: var(--sp-6);
+    margin-bottom: var(--sp-6);
+  }
+
+  .post-content :global(li) {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--c-text-muted);
+    margin-bottom: var(--sp-2);
+    list-style: disc;
+  }
+
+  .post-content :global(ol li) {
+    list-style: decimal;
+  }
+
+  .post-content :global(a) {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--c-border);
+    margin: var(--sp-12) 0;
+  }
+
+  .post-content :global(code) {
+    font-family: monospace;
+    font-size: 0.875em;
+    background: var(--c-surface);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--c-accent);
+  }
+
+  .post-footer {
+    margin-top: var(--sp-16);
+    padding-top: var(--sp-8);
+    border-top: 1px solid var(--c-border);
+  }
+
+  .back-link {
+    font-family: var(--f-accent);
+    font-size: var(--t-sm);
+    font-weight: 700;
+    color: var(--c-text-muted);
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--c-accent);
+  }
+</style>
