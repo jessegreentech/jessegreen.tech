@@ -1,0 +1,8 @@
+{
+  "pages": [
+    { "name": "home", "path": "/" },
+    { "name": "about", "path": "/about/" },
+    { "name": "cv", "path": "/cv/" },
+    { "name": "writing", "path": "/writing/" }
+  ]
+}

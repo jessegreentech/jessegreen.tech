@@ -5,9 +5,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "visual": "playwright test --config visual/playwright.config.ts layout.spec.ts baseline.spec.ts",
+    "visual:baseline": "VISUAL_BASELINE=1 playwright test --config visual/playwright.config.ts baseline.spec.ts --update-snapshots=missing",
+    "visual:evidence": "playwright test --config visual/playwright.config.ts evidence.spec.ts"
   },
   "dependencies": {
     "astro": "^4.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@types/node": "22.20.5"
   }
 }

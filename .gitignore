@@ -13,3 +13,8 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Visual testing output
+visual/output/
+playwright-report/
+test-results/

@@ -1,0 +1,13 @@
+{
+  "repoName": "jessegreen.tech",
+  "deployLocation": "Netlify (see netlify.toml)",
+  "languageStack": "astro",
+  "hasUI": true,
+  "breakpoints": [380, 480, 768, 1024, 1920],
+  "testViewports": [380, 768, 1024, 1920],
+  "visualServer": {
+    "command": "npm run build && npm run preview -- --host 127.0.0.1 --port 4321",
+    "url": "http://127.0.0.1:4321"
+  },
+  "previewDeploy": ""
+}

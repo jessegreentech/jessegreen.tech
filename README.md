@@ -67,3 +67,14 @@ Search the codebase for these placeholders and replace:
 - `yourdomain.com` — your actual domain (also update `astro.config.mjs`)
 - `[Company Name]` — your employers
 - CV role content — your actual history
+
+## Visual testing
+
+Advisory layout checks that never block a merge. See `docs/design/README.md` and `CLAUDE.md` for the rules.
+
+- `npm run visual` checks every page in `visual/pages.json` at 380, 768, 1024 and 1920 px: no horizontal overflow, no broken images, no clipped text, no console errors. It compares against baselines where they exist.
+- `npm run visual:baseline` creates only the missing baselines. Make them in the same environment CI uses, not on another machine, and approve them in the pull request that adds them.
+- `npm run visual:evidence` writes screenshots to `visual/output/evidence/` for the pull request description.
+- When a draft post is published, add its page to `visual/pages.json`.
+- If Playwright cannot download Chromium, set `CHROME_PATH` to an installed Chrome.
+- Netlify deploy previews already give a preview URL per pull request, so no separate preview deploy is configured here.
