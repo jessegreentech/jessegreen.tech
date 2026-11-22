@@ -73,7 +73,7 @@ Search the codebase for these placeholders and replace:
 Advisory layout checks that never block a merge. See `docs/design/README.md` and `CLAUDE.md` for the rules.
 
 - `npm run visual` checks every page in `visual/pages.json` at 380, 768, 1024 and 1920 px: no horizontal overflow, no broken images, no clipped text, no console errors. It compares against baselines where they exist.
-- `npm run visual:baseline` creates only the missing baselines. Make them in the same environment CI uses, not on another machine, and approve them in the pull request that adds them.
+- Baselines are created by CI. On a pull request from this repository, the "Create missing baselines" job runs `tools/ci-baseline.sh`, which runs the baseline command (creates only the missing ones, never overwrites), commits them to the branch and comments the list. Review the images in the diff; approving the pull request approves them. To change an approved baseline, delete its file in the pull request and CI recreates it. Do not commit baselines made locally: a different browser build renders slightly differently.
 - `npm run visual:evidence` writes screenshots to `visual/output/evidence/` for the pull request description.
 - When a draft post is published, add its page to `visual/pages.json`.
 - If Playwright cannot download Chromium, set `CHROME_PATH` to an installed Chrome.
